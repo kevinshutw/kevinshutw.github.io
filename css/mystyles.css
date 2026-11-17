@@ -54,8 +54,67 @@ h2 {
 .resume-section {
     /* 設定柔和的淡乳⽩⾊或淡⿈⾊背景 (RGB: 255, 248, 220) */
     background-color: rgb(241, 237, 215);
-    
+
     /* (可選) 加⼊牆⾯/紙張紋理背景圖 (圖⽚路徑相對於 mystyles.
 css 檔案) */
     background-image: url('../assets/img/always-grey.png');
 }
+
+/* ===================================================
+4. Bento Grid 便當盒⾵格作品集樣式
+=================================================== */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1 fr));
+    gap: 20px;
+}
+
+.bento-item {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 滑⿏懸停時微升效果 */
+.bento-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* 桌機與平板螢幕下，讓⾸張主打作品跨越 2 欄 */
+@media (min-width: 768px) {
+    .bento-wide {
+        grid-column: span 2;
+    }
+}
+
+/* ===================================================
+5. Waterfall 瀑布流⾵格作品集樣式
+=================================================== */
+.waterfall-container {
+    column-count: 3;
+    /* 電腦螢幕預設切分為 3 欄瀑布流 */
+    column-gap: 20px;
+}
+
+.waterfall-item {
+    break-inside: avoid;
+    /* 核⼼技巧：防⽌卡⽚被欄位裁切跨欄
+*/
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ⼿機版還原為單欄顯⽰ */
+@media (max-width: 768px) {
+    .waterfall-container {
+        column-count: 1;
+    }
+}   
